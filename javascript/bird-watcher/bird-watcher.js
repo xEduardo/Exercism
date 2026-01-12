@@ -1,0 +1,58 @@
+// @ts-check
+//
+// The line above enables type checking for this file. Various IDEs interpret
+// the @ts-check directive. It will give you helpful autocompletion when
+// implementing this exercise.
+
+/**
+ * Calculates the total bird count.
+ *
+ * @param {number[]} birdsPerDay
+ * @returns {number} total bird count
+ */
+export function totalBirdCount(birdsPerDay) {
+  let count = 0
+  for(let i = 0; i < birdsPerDay.length; i++) {
+    count += birdsPerDay[i]
+  }
+  return count
+}
+
+/**
+ * Calculates the total number of birds seen in a specific week.
+ *
+ * @param {number[]} birdsPerDay
+ * @param {number} week
+ * @returns {number} birds counted in the given week
+ */
+export function birdsInWeek(birdsPerDay, week) {
+  let countPerWeak = 0
+  let sp = (7*week)-7
+  let ep = (7*week)
+  
+  for (let i = 0; i <= birdsPerDay.length; i++) {
+    if (i >= sp && i < ep) {
+      countPerWeak += birdsPerDay[i]
+    }
+  }
+  
+  return countPerWeak
+}
+
+/**
+ * Fixes the counting mistake by increasing the bird count
+ * by one for every second day.
+ *
+ * @param {number[]} birdsPerDay
+ * @returns {void} should not return anything
+ */
+export function fixBirdCountLog(birdsPerDay) {
+  let t = 0
+  
+  for (let i = 0; i < birdsPerDay.length; i++) {
+    if (i === 0 || i === t) {
+      birdsPerDay[t] = birdsPerDay[t] +1
+      t += 2
+    }
+  }
+}
